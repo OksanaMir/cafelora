@@ -1,21 +1,49 @@
 import './style.css';
+//import './index.html';
+import { Layer } from './Layer/index.js';
 
-/*Na tlačíko .order-btn pověste posluchač, který při kliknutí přidá na prvek .drink__cup třídu .drink__cup--selected. Zároveň změní nápis na tlačítku na Zrušit.*/
+let navBtn = document.querySelector('#nav-btn');
+let navigation = document.querySelector('nav');
+navBtn.addEventListener('click', () => {
+  navigation.classList.toggle('nav-closed');
+});
 
-console.log('funguju!');
+const navItems = navigation.querySelectorAll('a');
 
-const btn = document.querySelector('.order-btn');
+navItems.forEach((navItem) => {
+  navItem.addEventListener('click', () => {
+    nav.classList.add('nav-closed');
+  });
+});
+
+const orderBtn = document.querySelector('.order-btn');
 let ordered = false;
-btn.addEventListener('click', (event) => {
+orderBtn.addEventListener('click', (event) => {
   const order = document.querySelector('.drink__cup');
 
   if (ordered === false) {
     order.classList.add('drink__cup--selected');
-    btn.textContent = 'Zrušit';
+    orderBtn.textContent = 'Zrušit';
     ordered = true;
   } else {
     order.classList.remove;
-    btn.textContent = 'Objednat';
+    orderBtn.textContent = 'Objednat';
     ordered = false;
   }
+});
+
+const drinkInfoElm = document.querySelector('.drink__info');
+drinkInfoElm.innerHTML += Layer({
+  color: '#feeeca',
+  label: 'mléčná pěna',
+});
+
+drinkInfoElm.innerHTML += Layer({
+  color: '#fed7b0',
+  label: 'teplé mléko',
+});
+
+drinkInfoElm.innerHTML += Layer({
+  color: '#613916',
+  label: 'espresso',
 });
